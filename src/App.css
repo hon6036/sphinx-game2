@@ -1,16 +1,101 @@
 .App {
-  text-align: center;
+  background: url(./img/Background.png) no-repeat center center fixed;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-size : cover;
+  overflow:hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Loading-page {
+  background-color: black;
+}
+.Inventory {
+  background: url(./img/Inventory.png) no-repeat;
+  background-size: 43.5%;
+  position: absolute;
+  width: 100vh;
+  height: 100vh;
+  left: 57.5%;
+  top: 14.5%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Inventory-button {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  position: relative;
+  top: 7%;
+  left: 2%;
+  width: 179px;
+  height: 49px;
+  border-radius: 10px;
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 29px;
+}
+
+.Inventory-button.active {
+  position: relative;
+  padding: 10px 20px;
+  width: 179px;
+  height: 49px;
+  background: linear-gradient(180deg, #FFA15C 0%, #FFFFFF 100%);
+  border-radius: 10px;
+}
+
+.Weapon-background {
+  top: 15%;
+  left: 10%;
+  position: absolute;
+  background: url(./img/WeaponBackground.png) no-repeat;
+  width: 25%;
+  height: 45%;
+}
+
+.slick-slide img{
+  position: absolute;
+  overflow: hidden;
+  margin: auto;
+  max-height: 80%;
+}
+
+.Inner-slide-text {
+  position: relative;
+  margin-top: 30px;
+  margin-left: 40px;
+  margin-bottom: 80px;
+  font-family: El Messiri;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  
+  text-transform: uppercase;
+}
+
+.Inner-slide-image {
+  display: block;
+  margin: auto;
+  height: 200px;
+}
+
+.slick-track {
+}
+
+.slick-list {
+  height: 400px;
+}
+
+.Mint-button {
+  background: linear-gradient(214.02deg, #F37500 6.04%, #FFFFFF 92.95%);
+  border-radius: 10px;
+  padding: 10px 20px;
+  width: 267.52px;
+  height: 49px;
+  margin-left: 30px;
 }
 
 .App-header {
@@ -22,17 +107,4 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
