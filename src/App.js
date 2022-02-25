@@ -53,14 +53,10 @@ function App() {
   var renderSlide = ''
 
   useEffect(() => {
-    console.log(123123123123123)
     if (noneNFTItemList !== "a") return;
-    console.log("rendering")
     axios.post("http://localhost:3030/game2").then((res)=>{setNoneNFTItemList(res.data)
-    console.log(res.data)
     getContractInstance()
     .then(response => {
-      console.log(1231256753)
       const contract = response
       window.ethereum.request({ method: 'eth_requestAccounts' })
       .then(response => {
@@ -75,14 +71,11 @@ function App() {
   var imageurl =''
   var nameOfWeapon=''
   var nonNFTList = []
-  console.log(890890890890)
   if (tab === 'NoneNFT') {
     if (NFTItemList !== []) {
       for (var i in NFTItemList) {
-        console.log(NFTItemList[i].name)
         for (var j in noneNFTItemList) {
           if (noneNFTItemList[j][0] === NFTItemList[i].name) {
-            console.log(noneNFTItemList[j][0])
             noneNFTItemList.splice(j, 1)
           }
         }
@@ -109,12 +102,10 @@ function App() {
   
   function showNFT() {
     setTap('NFT')
-    console.log("showNFT")
   }
 
   function showNoneNFT() {
     setTap('NoneNFT')
-    console.log("showNoneNFT")
   }
 
   async function getAccount() {
@@ -138,7 +129,6 @@ function App() {
 }
 
   async function getNFTList (account, contract) {
-    console.log(account, "account in getNFTList")
     
     const url = "http://localhost:3030/getItemInfo?public_key=" + account + "&game=" + "game2"
     const response = await axios.get(url)
@@ -148,18 +138,13 @@ function App() {
       if (response.data[i].game === "game2") {
         var nftImgJSONUrl = await contractA.methods.getUri(response.data[i].img_token_id).call()
         var nftStatJSONUrl = await contractA.methods.getUri(response.data[i].stat_token_id).call()
-        console.log(nftImgJSONUrl, "nftImgJSONUrl")
-        console.log(nftStatJSONUrl, "nftStatJSONUrl")
 
         const nftimgJSON = await fetch(nftImgJSONUrl).then(response => response.json())
 
         const nftStatJSON = await fetch(nftStatJSONUrl).then(response => response.json())
-        console.log(nftimgJSON, "nftimgJSON")
-        console.log(nftStatJSON, "nftStatJSON")
         const nftstat = await fetch(nftStatJSON.url).then(response => response.json())
         
         nftURIList.push({name: response.data[i].name, url: nftimgJSON.url, stat: nftstat}) 
-        console.log(nftURIList)
       }
       else {
         break
@@ -172,7 +157,6 @@ function App() {
   function mintNFT() {
     const selectedItem = noneNFTItemList[activeSlide]
     const url = "http://localhost:3000/game?name=" + selectedItem[0] + "&image=" + selectedItem[1] + "&stat=" + selectedItem[2] + "&game=" + selectedItem[3] + "&publicKey=" + account
-    console.log(url)
     const link = document.createElement('a')
     link.href = url 
     link.click()
