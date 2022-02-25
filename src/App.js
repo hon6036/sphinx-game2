@@ -67,7 +67,6 @@ function App() {
     })
   });
   }, [])
-
   var imageurl =''
   var nameOfWeapon=''
   var nonNFTList = []
@@ -121,7 +120,7 @@ function App() {
     .then(data => {
         //connect to NFTToken contract(Ropsten test network)
         let contract_abi = data;
-        let contract_address = "0x0366f1f1143397Ee686EFCD083a4Ec20688E6073";
+        let contract_address = "0x48F5dED0aD02C646D58c7ca54d32b697CDeB93ec";
         contract = new window.web3.eth.Contract(contract_abi, contract_address)
         
     });
@@ -137,8 +136,8 @@ function App() {
     for (var i in response.data) {
       if (response.data[i].game === "game2") {
         var nftImgJSONUrl = await contractA.methods.getUri(response.data[i].img_token_id).call()
+        console.log(nftImgJSONUrl, "34234")
         var nftStatJSONUrl = await contractA.methods.getUri(response.data[i].stat_token_id).call()
-
         const nftimgJSON = await fetch(nftImgJSONUrl).then(response => response.json())
 
         const nftStatJSON = await fetch(nftStatJSONUrl).then(response => response.json())
