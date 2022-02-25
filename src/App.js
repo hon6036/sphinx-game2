@@ -54,7 +54,7 @@ function App() {
 
   useEffect(() => {
     if (noneNFTItemList !== "a") return;
-    axios.post("http://localhost:3030/game2").then((res)=>{setNoneNFTItemList(res.data)
+    axios.post("http://3.34.2.167:3000/game2").then((res)=>{setNoneNFTItemList(res.data)
     getContractInstance()
     .then(response => {
       const contract = response
@@ -129,7 +129,7 @@ function App() {
 
   async function getNFTList (account, contract) {
     
-    const url = "http://localhost:3030/getItemInfo?public_key=" + account + "&game=" + "game2"
+    const url = "http://3.34.2.167:3000/getItemInfo?public_key=" + account + "&game=" + "game2"
     const response = await axios.get(url)
     const contractA = await contract
     var nftURIList = []
@@ -155,7 +155,7 @@ function App() {
 
   function mintNFT() {
     const selectedItem = noneNFTItemList[activeSlide]
-    const url = "http://localhost:3000/game?name=" + selectedItem[0] + "&image=" + selectedItem[1] + "&stat=" + selectedItem[2] + "&game=" + selectedItem[3] + "&publicKey=" + account
+    const url = "http://3.35.22.52:3000/game?name=" + selectedItem[0] + "&image=" + selectedItem[1] + "&stat=" + selectedItem[2] + "&game=" + selectedItem[3] + "&publicKey=" + account
     const link = document.createElement('a')
     link.href = url 
     link.click()
